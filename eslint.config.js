@@ -7,7 +7,7 @@ import eslintConfigPrettier from "eslint-config-prettier";
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   // 1. 检测文件的格式
-  { files: ["**/*.{js,mjs,cjs,ts,vue}"] },
+  { files: ["src/**/*.{js,mjs,cjs,ts,vue}"] },
   {
     // 2. 定义不同环境的全局变量
     languageOptions: {
@@ -30,6 +30,8 @@ export default [
     ignores: [
       "**/dist",
       "**/ui",
+      "release",
+      "dist-electron",
       ".vscode",
       ".idea",
       "*.sh",
