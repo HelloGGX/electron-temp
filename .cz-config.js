@@ -60,7 +60,18 @@ module.exports = {
     confirmCommit: "确定提交此 commit 吗？",
   },
   // 配置scope可选项，mono项目可按子项目维度划分，非mono项目可按功能or业务模块划分
-  scopes: ["global", "scope1", "scope2"],
+  scopes: [
+    "global",
+    "assets",
+    "components",
+    "features/admin",
+    "features/login",
+    "lib",
+    "router",
+    "stores",
+    "public",
+    "electron",
+  ],
   // commit描述的换行符
   breaklineChar: "&",
   skipQuestions: ["breaking", "footer"],

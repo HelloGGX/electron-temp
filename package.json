@@ -2,7 +2,6 @@
   "name": "vue-temp",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "npm-run-all2 --parallel type-check build-only && electron-builder",
@@ -89,7 +88,7 @@
   "main": "dist-electron/main.js",
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "./node_modules/cz-customizable"
     }
   }
 }
