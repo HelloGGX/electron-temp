@@ -5,7 +5,6 @@ import { adminRoutes } from "@/features/admin";
 
 // 合并所有路由
 const routes: RouteRecordRaw[] = [...loginRoutes, ...adminRoutes];
-
 // 创建路由实例
 const router = createRouter({
   history: createWebHashHistory(),

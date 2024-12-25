@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-screen bg-gray-100">
-    <!-- Sidebar -->
-    <Sidebar class="flex-shrink-0" />
+    <!-- SideBar -->
+    <SideBar class="flex-shrink-0" />
     <!-- Main Content -->
     <div class="flex-1 flex flex-col overflow-hidden">
       <!-- Header -->

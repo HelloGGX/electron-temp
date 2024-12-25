@@ -1,7 +1,7 @@
-import Layout from "@/components/Layout.vue";
+import Layout from "@/components/MainLayout.vue";
 
 const Dashboard = () =>
-  import(/* webpackChunkName: "Dashboard" */ "../components/Dashboard.vue");
+  import(/* webpackChunkName: "DashBoard" */ "../components/DashBoard.vue");
 
 export const adminRoutes = [
   {

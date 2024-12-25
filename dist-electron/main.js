@@ -1,41 +1,51 @@
-import { app as o, BrowserWindow as i } from "electron";
-import { createRequire as l } from "node:module";
-import { fileURLToPath as p } from "node:url";
-import n from "node:path";
-l(import.meta.url);
-const s = n.dirname(p(import.meta.url));
-process.env.APP_ROOT = n.join(s, "..");
-const t = process.env.VITE_DEV_SERVER_URL, E = n.join(process.env.APP_ROOT, "dist-electron"), d = n.join(process.env.APP_ROOT, "ui"), m = o.commandLine.getSwitchValue("url");
-o.on("session-created", (r) => {
-  r.setCertificateVerifyProc((R, c) => {
-    c(0);
+import { app, BrowserWindow } from "electron";
+import { createRequire } from "node:module";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+createRequire(import.meta.url);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+process.env.APP_ROOT = path.join(__dirname, "..");
+const VITE_DEV_SERVER_URL = process.env["VITE_DEV_SERVER_URL"];
+const MAIN_DIST = path.join(process.env.APP_ROOT, "dist-electron");
+const RENDERER_DIST = path.join(process.env.APP_ROOT, "ui");
+const serverUrl = app.commandLine.getSwitchValue("url");
+app.on("session-created", (session) => {
+  session.setCertificateVerifyProc((request, callback) => {
+    callback(0);
   });
 });
-process.env.VITE_PUBLIC = t ? n.join(process.env.APP_ROOT, "public") : d;
-let e;
-function a() {
-  if (e = new i({
+process.env.VITE_PUBLIC = VITE_DEV_SERVER_URL ? path.join(process.env.APP_ROOT, "public") : RENDERER_DIST;
+let win;
+function createWindow() {
+  win = new BrowserWindow({
     webPreferences: {
-      preload: n.join(s, "preload.mjs")
+      preload: path.join(__dirname, "preload.mjs")
     }
-  }), e.webContents.on("did-finish-load", () => {
-    e == null || e.webContents.send("main-process-message", (/* @__PURE__ */ new Date()).toLocaleString());
-  }), t)
-    e.loadURL(`${t}#/login`);
-  else {
-    const r = `${m}#/login`;
-    e.loadURL(r);
+  });
+  win.webContents.on("did-finish-load", () => {
+    win == null ? void 0 : win.webContents.send("main-process-message", (/* @__PURE__ */ new Date()).toLocaleString());
+  });
+  if (VITE_DEV_SERVER_URL) {
+    win.loadURL(`${VITE_DEV_SERVER_URL}#/login`);
+  } else {
+    const url = `${serverUrl}#/login`;
+    win.loadURL(url);
   }
 }
-o.on("window-all-closed", () => {
-  process.platform !== "darwin" && (o.quit(), e = null);
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit();
+    win = null;
+  }
 });
-o.on("activate", () => {
-  i.getAllWindows().length === 0 && a();
+app.on("activate", () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
 });
-o.whenReady().then(a);
+app.whenReady().then(createWindow);
 export {
-  E as MAIN_DIST,
-  d as RENDERER_DIST,
-  t as VITE_DEV_SERVER_URL
+  MAIN_DIST,
+  RENDERER_DIST,
+  VITE_DEV_SERVER_URL
 };
