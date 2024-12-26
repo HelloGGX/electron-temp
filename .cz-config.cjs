@@ -1,6 +1,4 @@
 // .cz-config.js
-// 个人demo，经由ChatGPT润色的中文版
-
 module.exports = {
   // 这里配置type的option值，可自行调整顺序或修改文案
   types: [
