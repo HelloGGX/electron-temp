@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 release
+coverage/*
 ui
 dist-ssr
 *.local

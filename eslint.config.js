@@ -32,6 +32,7 @@ export default [
       "**/ui",
       "release",
       "dist-electron",
+      "coverage/*",
       ".vscode",
       ".idea",
       "*.sh",

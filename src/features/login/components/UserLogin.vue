@@ -7,7 +7,7 @@
           <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">欢迎登录管理系统</h2>
         </div>
 
-        <form class="space-y-6" @submit.prevent="handleLogin">
+        <form class="space-y-6" @submit.prevent="handleLogin" role="form">
           <div>
             <label for="username" class="block text-sm font-medium text-gray-700">用户名</label>
             <div class="mt-1">
