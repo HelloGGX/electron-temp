@@ -2,11 +2,7 @@
 import { AxiosError } from "axios";
 import { QueryClient } from "@tanstack/vue-query";
 
-import type {
-  DefaultOptions,
-  UseMutationOptions,
-  UseQueryOptions,
-} from "@tanstack/vue-query";
+import type { DefaultOptions, UseMutationOptions, UseQueryOptions } from "@tanstack/vue-query";
 
 export const queryConfig: DefaultOptions = {
   queries: {
@@ -23,26 +19,12 @@ export const queryConfig: DefaultOptions = {
   },
 };
 export type PromiseValue<PromiseType, Otherwise = PromiseType> =
-  PromiseType extends Promise<infer Value>
-    ? { 0: PromiseValue<Value>; 1: Value }[PromiseType extends Promise<unknown>
-        ? 0
-        : 1]
-    : Otherwise;
+  PromiseType extends Promise<infer Value> ? { 0: PromiseValue<Value>; 1: Value }[PromiseType extends Promise<unknown> ? 0 : 1] : Otherwise;
 
 export const queryClient = new QueryClient({ defaultOptions: queryConfig });
 
-export type ExtractFnReturnType<FnType extends (...args: any) => any> =
-  PromiseValue<ReturnType<FnType>>;
+export type ExtractFnReturnType<FnType extends (...args: any) => any> = PromiseValue<ReturnType<FnType>>;
 
-export type QueryConfig<QueryFnType extends (...args: any) => any> = Omit<
-  UseQueryOptions<ExtractFnReturnType<QueryFnType>>,
-  "queryKey" | "queryFn"
->;
+export type QueryConfig<QueryFnType extends (...args: any) => any> = Omit<UseQueryOptions<ExtractFnReturnType<QueryFnType>>, "queryKey" | "queryFn">;
 
-export type MutationConfig<MutationFnType extends (...args: any) => any> =
-  UseMutationOptions<
-    ExtractFnReturnType<MutationFnType>,
-    AxiosError,
-    Parameters<MutationFnType>[0],
-    unknown
-  >;
+export type MutationConfig<MutationFnType extends (...args: any) => any> = UseMutationOptions<ExtractFnReturnType<MutationFnType>, AxiosError, Parameters<MutationFnType>[0], unknown>;

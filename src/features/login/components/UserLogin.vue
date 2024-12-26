@@ -1,27 +1,15 @@
 <template>
-  <div
-    class="flex min-h-screen items-center justify-center bg-white px-4 py-12 sm:px-6 lg:px-8"
-  >
+  <div class="flex min-h-screen items-center justify-center bg-white px-4 py-12 sm:px-6 lg:px-8">
     <div class="w-full max-w-md">
       <div class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
         <div class="text-center mb-8">
-          <img
-            class="mx-auto h-12 w-auto"
-            src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-            alt="您的公司"
-          />
-          <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            欢迎登录管理系统
-          </h2>
+          <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="您的公司" />
+          <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">欢迎登录管理系统</h2>
         </div>
 
         <form class="space-y-6" @submit.prevent="handleLogin">
           <div>
-            <label
-              for="username"
-              class="block text-sm font-medium text-gray-700"
-              >用户名</label
-            >
+            <label for="username" class="block text-sm font-medium text-gray-700">用户名</label>
             <div class="mt-1">
               <input
                 id="username"
@@ -36,11 +24,7 @@
           </div>
 
           <div>
-            <label
-              for="password"
-              class="block text-sm font-medium text-gray-700"
-              >密码</label
-            >
+            <label for="password" class="block text-sm font-medium text-gray-700">密码</label>
             <div class="mt-1">
               <input
                 id="password"
@@ -56,24 +40,12 @@
 
           <div class="flex items-center justify-between">
             <div class="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-              />
-              <label for="remember-me" class="ml-2 block text-sm text-gray-900">
-                记住我
-              </label>
+              <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
+              <label for="remember-me" class="ml-2 block text-sm text-gray-900"> 记住我 </label>
             </div>
 
             <div class="text-sm">
-              <a
-                href="#"
-                class="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                忘记密码？
-              </a>
+              <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> 忘记密码？ </a>
             </div>
           </div>
 
