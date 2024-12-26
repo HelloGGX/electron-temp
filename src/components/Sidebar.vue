@@ -30,10 +30,11 @@
 
 <script setup>
 import { ref } from "vue";
-import { Monitor, Grid, CreditCard, Operation, User, Expand, Fold } from "@element-plus/icons-vue";
+import { Monitor,
+   Grid, CreditCard, Operation, User, Expand, Fold } from "@element-plus/icons-vue";
 
 const collapsed = ref(false);
-const activeIndex = ref("1");
+   const activeIndex = ref("1");
 
 // 动态菜单项数据
 const menuItems = ref([
