@@ -1,8 +1,7 @@
 import { defineStore } from "pinia";
 import { store } from "./index";
 
-export const useLoginStore = defineStore({
-  id: "login",
+export const useLoginStore = defineStore("login", {
   state: () => ({
     isLogin: false,
   }),
