@@ -11,17 +11,15 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import basicSsl from "@vitejs/plugin-basic-ssl";
 import electron from "vite-plugin-electron/simple";
 import path from "node:path";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://vitejs.dev/config/
 const pathSrc = fileURLToPath(new URL("./src", import.meta.url));
 
 export default ({ mode }: { mode: string }) => {
-  const VITE_APP_BASE_API: string = loadEnv(
-    mode,
-    process.cwd()
-  ).VITE_APP_BASE_API;
+  const VITE_APP_BASE_API: string = loadEnv(mode, process.cwd()).VITE_APP_BASE_API;
   return defineConfig({
-    base: "/ui/",
+    base: "./",
     resolve: {
       alias: {
         "@": pathSrc,
@@ -29,6 +27,7 @@ export default ({ mode }: { mode: string }) => {
     },
     plugins: [
       vue(),
+      tailwindcss(),
       electron({
         main: {
           // Shortcut of `build.lib.entry`.
@@ -72,7 +71,6 @@ export default ({ mode }: { mode: string }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          api: "modern",
           additionalData: `@use "@/assets/theme/var.scss" as *;`,
         },
       },
