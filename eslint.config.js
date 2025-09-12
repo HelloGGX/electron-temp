@@ -10,9 +10,7 @@ export default [
   { files: ["src/**/*.{js,mjs,cjs,ts,vue}"] },
   {
     // 2. 定义不同环境的全局变量
-    languageOptions: {
-      globals: { ...globals.browser, ...globals.node },
-    },
+    languageOptions: { globals: { ...globals.browser, ...globals.node } },
   },
   // 3. js 推荐 规则
   pluginJs.configs.recommended,
@@ -21,10 +19,7 @@ export default [
   // 5. vue 推荐 规则
   ...pluginVue.configs["flat/strongly-recommended"],
   // 6. 检测 vue 中的 ts 代码采用 tsparser
-  {
-    files: ["**/*.vue"],
-    languageOptions: { parserOptions: { parser: tseslint.parser } },
-  },
+  { files: ["**/*.vue"], languageOptions: { parserOptions: { parser: tseslint.parser } } },
   // 7. ignores 配置
   {
     ignores: [

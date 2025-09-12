@@ -16,10 +16,7 @@ import path from "node:path";
 const pathSrc = fileURLToPath(new URL("./src", import.meta.url));
 
 export default ({ mode }: { mode: string }) => {
-  const VITE_APP_BASE_API: string = loadEnv(
-    mode,
-    process.cwd()
-  ).VITE_APP_BASE_API;
+  const VITE_APP_BASE_API: string = loadEnv(mode, process.cwd()).VITE_APP_BASE_API;
   return defineConfig({
     base: "/ui/",
     resolve: {
@@ -59,24 +56,11 @@ export default ({ mode }: { mode: string }) => {
       }),
       AutoImport({
         imports: ["vue", "vue-router", "pinia"],
-        resolvers: [
-          ElementPlusResolver({
-            importStyle: "sass",
-          }),
-        ],
         dts: path.resolve(pathSrc, "auto-imports.d.ts"),
       }),
       basicSsl(),
       vueDevTools(),
     ],
-    css: {
-      preprocessorOptions: {
-        scss: {
-          api: "modern",
-          additionalData: `@use "@/assets/theme/var.scss" as *;`,
-        },
-      },
-    },
     server: {
       proxy: {
         "/api": {
@@ -95,9 +79,6 @@ export default ({ mode }: { mode: string }) => {
       // 使用 happy-dom 模拟 DOM
       // 这需要你安装 happy-dom 作为对等依赖（peer dependency）
       environment: "happy-dom",
-      deps: {
-        inline: ["element-plus"],
-      },
       coverage: {
         provider: "v8",
         reporter: ["text", "lcov"],

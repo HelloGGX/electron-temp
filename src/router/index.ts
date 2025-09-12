@@ -12,17 +12,10 @@ const router = createRouter({
   scrollBehavior(to) {
     if (to.hash) {
       // 如果目标路由有hash，滚动到对应的元素
-      return {
-        el: to.hash,
-        behavior: "smooth",
-      };
+      return { el: to.hash, behavior: "smooth" };
     }
     // 否则滚动到页面顶部
-    return {
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    };
+    return { top: 0, left: 0, behavior: "smooth" };
   },
 });
 
