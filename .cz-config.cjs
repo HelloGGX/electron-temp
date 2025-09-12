@@ -50,26 +50,12 @@ module.exports = {
   // 每一步的提示信息
   messages: {
     type: "请选择提交类型",
-    scope: "请选择文件修改范围",
     subject: "请输入commit标题(必填)",
     body: "请输入commit描述, 可通过&换行(选填)",
     // breaking: '列出任何BREAKING CHANGES(破坏性修改)(可选)',
     // footer: '请输入要关闭的issue(可选)',
     confirmCommit: "确定提交此 commit 吗？",
   },
-  // 配置scope可选项，mono项目可按子项目维度划分，非mono项目可按功能or业务模块划分
-  scopes: [
-    "global",
-    "assets",
-    "components",
-    "features/admin",
-    "features/login",
-    "lib",
-    "router",
-    "stores",
-    "public",
-    "electron",
-  ],
   // commit描述的换行符
   breaklineChar: "&",
   skipQuestions: ["breaking", "footer"],
