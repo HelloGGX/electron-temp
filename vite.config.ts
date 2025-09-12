@@ -6,11 +6,10 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import vueDevTools from "vite-plugin-vue-devtools";
 
 import AutoImport from "unplugin-auto-import/vite";
-import Components from "unplugin-vue-components/vite";
-import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import basicSsl from "@vitejs/plugin-basic-ssl";
 import electron from "vite-plugin-electron/simple";
 import path from "node:path";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://vitejs.dev/config/
 const pathSrc = fileURLToPath(new URL("./src", import.meta.url));
@@ -46,20 +45,13 @@ export default ({ mode }: { mode: string }) => {
             : {},
       }),
       vueJsx(),
-      Components({
-        resolvers: [
-          ElementPlusResolver({
-            importStyle: "sass",
-          }),
-        ],
-        dts: path.resolve(pathSrc, "components.d.ts"),
-      }),
       AutoImport({
         imports: ["vue", "vue-router", "pinia"],
         dts: path.resolve(pathSrc, "auto-imports.d.ts"),
       }),
       basicSsl(),
       vueDevTools(),
+      tailwindcss(),
     ],
     server: {
       proxy: {
